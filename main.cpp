@@ -65,7 +65,9 @@ void acc_call()  {
  
     //uLCD.printf("Here is %x\r\n", who_am_i);
     //while (true) {
-    for(int i=0;i<100;i++){
+    
+    for(int i = 0;i<100;i++){
+        
         FXOS8700CQ_readRegs(FXOS8700Q_OUT_X_MSB, res, 6);
  
         acc16 = (res[0] << 6) | (res[1] >> 2);
@@ -83,12 +85,13 @@ void acc_call()  {
             acc16 -= UINT14_MAX;
         t[2] = ((float)acc16) / 4096.0f;
  
-        printf("%1.4f\r\n%1.4f\r\n%1.4f\r\n",\
+        pc.printf("%1.4f   %1.4f   %1.4f   \r\n",\
              t[0],t[1],t[2]
         );
+        
         if(i%10==0)
         led1 = !led1;
-       wait(0.1);
+        wait(0.1);
     }
 }
 
